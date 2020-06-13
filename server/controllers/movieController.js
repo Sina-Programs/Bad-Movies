@@ -1,13 +1,13 @@
-const movieModel = require("../models/movieModel.js");
-var axios = require("axios");
-const { API_KEY } = require("../../config");
+const movieModel = require('../models/movieModel.js');
+var axios = require('axios');
+const { API_KEY } = require('../../config');
 
 //Return requests to the client
 module.exports = {
   getSearch: (req, res) => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=vote_average.asc&vote_count.gte=10&vote_average.lte=5&include_adult=false&page=1&with_genres=${req.query.genre}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=vote_average.desc&vote_count.gte=1000&vote_average.gte=8&include_adult=false&page=1&with_genres=${req.query.genre}`
       )
       .then(({ data }) => {
         res.send(data.results);
@@ -20,7 +20,7 @@ module.exports = {
   getGenres: (req, res) => {
     axios
       .get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=71642da596401f1182a87d53662a28d4&language=en-US"
+        'https://api.themoviedb.org/3/genre/movie/list?api_key=71642da596401f1182a87d53662a28d4&language=en-US'
       )
       .then(({ data }) => {
         res.send(data.genres);

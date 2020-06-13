@@ -4403,7 +4403,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! /Users/sinanikmaram/Desktop/New-Bad-Movies/Bad-Movies/client/src/index.jsx */"./client/src/index.jsx");
+module.exports = __webpack_require__(/*! /Users/sinanikmaram/Desktop/HRNYC/New-Bad-Movies/Bad-Movies/client/src/index.jsx */"./client/src/index.jsx");
 
 
 /***/ })
