@@ -1,31 +1,53 @@
-const movieModel = require('../models/movieModel.js');
-const apiHelpers = require('../helpers/apiHelpers.js');
+const movieModel = require("../models/movieModel.js");
+var axios = require("axios");
+const { API_KEY } = require("../../config");
 
 //Return requests to the client
 module.exports = {
   getSearch: (req, res) => {
-    // get the search genre     
-
-    // https://www.themoviedb.org/account/signup
-    // get your API KEY
-
-    // use this endpoint to search for movies by genres, you will need an API key
-
-    // https://api.themoviedb.org/3/discover/movie
-
-    // and sort them by horrible votes using the search parameters in the API
+    axios
+      .get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=vote_average.asc&vote_count.gte=10&vote_average.lte=5&include_adult=false&page=1&with_genres=${req.query.genre}`
+      )
+      .then(({ data }) => {
+        res.send(data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+      });
   },
   getGenres: (req, res) => {
-    // make an axios request to get the list of official genres
-    
-    // use this endpoint, which will also require your API key: https://api.themoviedb.org/3/genre/movie/list
-    
-    // send back
+    axios
+      .get(
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=71642da596401f1182a87d53662a28d4&language=en-US"
+      )
+      .then(({ data }) => {
+        res.send(data.genres);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(404);
+      });
   },
   saveMovie: (req, res) => {
-
+    movieModel.badmovies.save(req.body, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(400);
+      } else {
+        res.sendStatus(201);
+      }
+    });
   },
   deleteMovie: (req, res) => {
-
-  }
-}
+    movieModel.badmovies.delete(req.body, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(400);
+      } else {
+        res.sendStatus(201);
+      }
+    });
+  },
+};
