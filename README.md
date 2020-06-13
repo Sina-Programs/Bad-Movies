@@ -1,30 +1,26 @@
-# Bad Movies
+# Good Movies
 
 A practice tool designed to cover the fundamentals of fullstack application development
 
-Learn the fundamentals of application structure and database integration by making a web app that renders the most horrible movies as listed on 'themoviedb.org' based on certain search criteria, namely genre. The user should be able to save a movie to their 'favorites' list and delete movies from this list.
+Learn the fundamentals of application structure and database integration by making a web app that renders acclaimed movies as listed on 'themoviedb.org' based on certain search criteria, namely genre. The user should be able to save a movie to their 'favorites' list and delete movies from this list.
 
-### Basic functionality: 
+### Starting the Application:
 
-[ ] User should be able to search for the worst movies from any of the official genres listed on 'themoviedb.org'
+(\$ denotes terminal commands)
 
-[ ] User should be given this official list of genres to select from and search with, filtering by selected genre
+Install Dependencies: \$ npm install
 
-[ ] A search should find and display a limited list of movies sorted by rating in ascending order, showing the movies with the worst ratings first (figure out how to modify the API endpoint to do so)
+Compile client code: \$ npm run react-dev
 
-[ ] User should be able to click on any movie in order to save it to their favorites list (mySQL database, you must make your own Schema)
+Start the Server: \$ npm run server-dev
 
-[ ] If a user has navigated to their favorites page, clicking on a movie should delete it from their favorites (unlike on the main page, where clicking on a movie adds it to their favorites list)
-
-[ ] Store your data in MySQL db (or MongoDB if/when you feel comfortable)
+Open Application: - go to localhost:3000 in browser
 
 ### The API for the application, where you will query for worst movies and all official genres:
 
 https://developers.themoviedb.org/3/getting-started/introduction
 
---------
-
-*To start the server and start webpack check out package.json*
+---
 
 Credits:
 Peter Park
